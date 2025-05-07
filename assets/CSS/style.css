@@ -104,42 +104,45 @@ section {
   position: fixed;
   z-index: 10;
   top: 50%;
-  right: 3%;
+  right: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transform: translateY(-50%);
+  gap: 1rem;
 }
 
 .controls .control {
-  padding: 1.5rem;
-  cursor: pointer;
+  width: 48px;
+  height: 48px;
   background-color: var(--color-grey5);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+  border-radius: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.6rem 0;
   box-shadow: var(--box-shadow1);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.controls .control:hover {
+  background-color: var(--color-secondary);
+  transform: scale(1.05);
 }
 
 .controls .control i {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: var(--color-grey1);
   pointer-events: none;
 }
 
 .controls .active-btn {
   background-color: var(--color-secondary) !important;
-  transition: all 0.4s ease-in-out;
 }
 
 .controls .active-btn i {
-  color: var(--color-white) !important;
+  color: var(--color-primary) !important;
 }
 
 /* ----------------------------------------- Header Style ----------------------------------------- */
@@ -160,7 +163,7 @@ section {
 .left-header .image {
   height: 60%;
   width: 60%;
-  margin-top: 3rem;
+  margin-top: 6rem;
   margin-left: 3rem;
   border-radius: var(--br-sm-2);
   overflow: hidden;
@@ -183,8 +186,10 @@ section {
 }
 
 .right-header .name {
-  font-size: 2.2rem;
-  font-weight: 600;
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-white);
 }
 
 .right-header .name span {
@@ -192,7 +197,54 @@ section {
 }
 
 .right-header p {
-  margin: 1.5rem 0;
-  line-height: 1.8rem;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  max-width: 680px;
   color: var(--color-grey1);
+}
+
+/* ----------------------------------------- Button Style ----------------------------------------- */
+.btn-con {
+  display: flex;
+  align-self: flex-start;
+  margin-top: 2.5rem; /* Abstand nach oben */
+}
+
+.main-btn {
+  display: inline-flex;
+  align-items: stretch; /* gleich hohe Bereiche */
+  border-radius: 12px;
+  overflow: hidden;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  border: 2px solid var(--color-secondary);
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-text {
+  padding: 1rem 1.6rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-secondary);
+}
+
+.btn-icon {
+  padding: 1rem;
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon i {
+  font-size: 1.3rem;
+  color: var(--color-secondary);
 }
