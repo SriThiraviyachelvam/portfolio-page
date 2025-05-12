@@ -41,7 +41,7 @@ header {
 section {
   min-height: 100vh;
   width: 100%;
-  position: absolute;
+  position: relative;
   left: 0;
   top: 0;
   padding: 3rem 12vw;
@@ -249,9 +249,7 @@ section {
   color: var(--color-secondary);
 }
 
-/* -------------------------------------- */
-/* Über mich Bereich - Layout & Typografie */
-/* -------------------------------------- */
+/* Über mich Bereich - generell Layout & Typografie */
 .about-container {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -279,9 +277,8 @@ section {
   padding: 1rem 0;
 }
 
-/* -------------------------------------- */
 /* Statistikboxen auf der rechten Seite   */
-/* -------------------------------------- */
+
 .right-about {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -334,216 +331,189 @@ section {
   border-radius: 2px;
 }
 
-/* Über mich – Skills Bereich (Progress Bars) */
-.about-stats {
-  padding-bottom: 4rem;
+/*Über mich: 3-Spalten-Layout*/
+
+.ueber-mich-wrapper {
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
-.progress-header {
+.ueber-mich-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.5fr;
+  gap: 2.5rem;
+  align-items: start;
+  padding-top: 2rem;
+}
+
+.about-box {
+  background-color: var(--color-grey5);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.about-heading {
+  font-size: 1.4rem;
+  color: var(--color-white);
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+.about-box p,
+.timeline-item p,
+.timeline-item h5 {
+  font-size: 1.05rem;
+  line-height: 1.8rem;
+  color: var(--color-grey1);
+  margin-bottom: 1.2rem;
+
+  hyphens: none; /* keine Silbentrennung */
+  word-break: normal; /* Wörter nicht mitten drin umbrechen */
+  overflow-wrap: normal; /* kein Zwangs-Umbruch */
+  white-space: normal; /* Umbruch nur an Leerzeichen */
+}
+
+.about-box .btn-con {
+  margin-top: 2rem;
+}
+
+/* Informatik-Kenntnisse (mittlere Spalte) */
+
+.about-skills .progress-bar {
+  margin-bottom: 1rem;
+}
+
+.about-skills .progress-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
-.prog-titel {
+.about-skills .prog-titel {
   font-weight: 600;
   font-size: 1rem;
   color: var(--color-white);
 }
 
-.prog-text {
+.about-skills .prog-text {
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--color-secondary);
 }
 
-.about-stats .stat-titel {
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-}
-
-.about-stats .progress-bars {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2rem;
-}
-
-.about-stats .progress-bar {
-  display: flex;
-  flex-direction: column;
-}
-
-.about-stats .progress-bar .prog-titel {
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--color-white);
-}
-
-.about-stats .progress-bar .progress-con {
-  display: flex;
-  align-items: center;
-}
-
-.about-stats .progress-bar .progress-con .prog-text {
-  color: var(--color-white);
-  margin-left: 0.5rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-.about-stats .progress-bar .progress-con .progress {
-  width: 100%;
-  height: 0.75rem;
+.about-skills .progress-con {
   background-color: #1a1a1a;
+  height: 0.75rem;
   border-radius: 50px;
-  margin-left: 1rem;
-  position: relative;
   overflow: hidden;
+  position: relative;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-.about-stats .progress-bar .progress-con .progress span {
+.about-skills .progress-con span {
   position: absolute;
+  height: 100%;
   top: 0;
   left: 0;
-  height: 100%;
   border-radius: 50px;
   background: linear-gradient(90deg, #1db954, #00e676);
   transition: width 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.about-stats .progress-bar .progress-con .progress span:hover {
+.about-skills .progress-con span:hover {
   box-shadow: 0 0 10px 4px rgba(29, 185, 84, 0.5);
 }
 
-.progress .html {
+.about-skills .html {
   width: 70%;
 }
-.progress .css {
+.about-skills .css {
   width: 60%;
 }
-.progress .javascript {
+.about-skills .javascript {
   width: 55%;
 }
-.progress .figma {
+.about-skills .figma {
   width: 70%;
 }
-.progress .python {
+.about-skills .python {
   width: 60%;
 }
-.progress .sql {
+.about-skills .sql {
   width: 40%;
 }
 
-/* Über mich – Rechte Seite (Infoboxen) */
-.right-about {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
+/* Lebenslauf (rechte Spalte) */
 
-.about-item {
+.about-lifeline {
+  padding: 1.5rem;
   background-color: var(--color-grey5);
-  border-left: 4px solid var(--color-secondary);
-  padding: 1.2rem;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
-}
-
-.about-item:hover {
-  transform: translateY(-4px);
-  border-left: 4px solid var(--color-white);
-}
-
-.abt-text {
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
 
-.abt-text .large-text {
-  font-size: 2.1rem;
+.about-lifeline h3 {
+  color: var(--color-white);
+  font-size: 1.3rem;
   font-weight: 700;
-  color: var(--color-secondary);
+  margin-bottom: 1.5rem;
 }
-
-.abt-text .small-text {
-  font-size: 0.95rem;
-  color: var(--color-grey2);
-  text-transform: uppercase;
-  padding-left: 1.5rem;
-  position: relative;
-}
-
-.abt-text .small-text::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1rem;
-  height: 2px;
-  background-color: var(--color-secondary);
-}
-
-/*-------------Lebenslauf-----------------*/
 
 .timeline {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem;
-  padding: 4rem 0;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .timeline-item {
-  position: relative;
-  padding-left: 3rem;
-  border-left: 3px solid var(--color-secondary);
   background-color: var(--color-grey5);
+  padding: 1.5rem;
   border-radius: 12px;
-  padding: 2rem 1.5rem 2rem 3.5rem;
+  border-left: 4px solid var(--color-secondary);
+  position: relative;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .timeline-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
 }
 
 .timeline-item::before {
   content: "";
   position: absolute;
-  top: 2rem;
-  left: -7px;
-  width: 15px;
-  height: 15px;
+  top: 1.5rem;
+  left: -0.8rem;
+  width: 12px;
+  height: 12px;
   background-color: var(--color-secondary);
   border: 2px solid var(--color-white);
   border-radius: 50%;
-  z-index: 10;
 }
 
-.timeline .tl-icon {
+.tl-icon {
   position: absolute;
-  left: -55px;
-  top: 1.5rem;
+  top: 1rem;
+  left: -1.3rem;
   background-color: var(--color-secondary);
   color: var(--color-primary);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  font-size: 1rem;
 }
 
 .timeline-item .tl-duration {
@@ -555,23 +525,5 @@ section {
   font-weight: 600;
   display: inline-block;
   margin-bottom: 0.8rem;
-}
-
-.timeline-item h5 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-white);
-  margin-bottom: 0.5rem;
-}
-
-.timeline-item h5 span {
-  color: var(--color-grey1);
-  font-weight: 500;
-  font-size: 1.05rem;
-}
-
-.timeline-item p {
-  color: var(--color-grey1);
-  font-size: 1rem;
-  line-height: 1.6rem;
+  white-space: nowrap; /* nur hier, nicht global */
 }
