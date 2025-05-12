@@ -527,3 +527,89 @@ section {
   margin-bottom: 0.8rem;
   white-space: nowrap; /* nur hier, nicht global */
 }
+
+/* ====== Portfolio Bereich ====== */
+.portfolios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.portfolio-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  background-color: var(--color-grey5);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.03);
+}
+
+.portfolio-item .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hover-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(18, 18, 18, 0.95);
+  color: var(--color-white);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  text-align: center;
+}
+
+.portfolio-item:hover .hover-item {
+  opacity: 1;
+}
+
+.hover-item h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+}
+
+.hover-item .icons {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.hover-item .icon {
+  font-size: 1.5rem;
+  color: var(--color-white);
+  background-color: var(--color-secondary);
+  padding: 0.6rem;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hover-item .icon:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.port-text {
+  margin-top: 1.5rem;
+  color: var(--color-grey1);
+  font-size: 1.05rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
