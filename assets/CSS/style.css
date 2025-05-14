@@ -341,7 +341,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1.2fr 1.5fr;
   gap: 2.5rem;
-  align-items: start;
+  align-items: stretch;
   padding-top: 2rem;
 }
 
@@ -359,7 +359,6 @@ section {
   font-weight: 700;
 }
 
-/* Über mich + Lebenslauf – lesbare Text-Regeln */
 .about-box p,
 .timeline-item p,
 .timeline-item h5 {
@@ -367,13 +366,11 @@ section {
   line-height: 1.8rem;
   color: var(--color-grey1);
   margin-bottom: 1.2rem;
-
-  /* natürliche, linksbündige Umbrüche */
   text-align: left;
-  hyphens: none; /* erlaubt Silbentrennung an sinnvollen Stellen */
-  word-break: normal; /* bricht keine Wörter in der Mitte */
-  overflow-wrap: break-word; /* nur sehr lange Wörter umbrechen */
-  white-space: normal; /* Umbruch nur bei Leerzeichen */
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .nowrap {
@@ -481,6 +478,21 @@ section {
   position: relative;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.timeline-item h5 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 0.4rem;
+
+  /* gleiche Zeilenanzahl erzwingen (hier ca. 2 Zeilen + Abstand) */
+  min-height: 3.2rem; /* bei Dir bitte noch feinjustieren falls nötig */
+
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
+  white-space: normal;
 }
 
 .timeline-item:hover {
