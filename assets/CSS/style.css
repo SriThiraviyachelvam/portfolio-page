@@ -806,3 +806,180 @@ section {
   justify-content: center;
   font-size: 1rem;
 }
+
+/* ========================
+   Kontaktbereich
+   ======================== */
+
+/* Container & Grid */
+.kontakt-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 4rem 12vw;
+}
+.kontakt-container .main-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Layout: linke Info-Spalte | rechte Formular-Spalte */
+.kontakt-content-con {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ========================
+   Kontaktbereich komplett
+   ======================== */
+
+/* Basis-Container & Grid */
+.kontakt-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 4rem 12vw;
+}
+.kontakt-container .main-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.kontakt-content-con {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Linke Spalte */
+.left-kontakt {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.left-kontakt h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-white);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+.left-kontakt h4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background-color: var(--color-secondary);
+  border-radius: 2px;
+}
+.left-kontakt p {
+  font-size: 1.05rem;
+  line-height: 1.8rem;
+  color: var(--color-grey1);
+}
+
+/* Kontakt-Infos (Icon + Text nebeneinander) */
+.kontakt-info {
+  margin-top: 1.5rem;
+}
+.kontakt-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.kontakt-item .icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-secondary);
+  border-radius: 50%;
+}
+.kontakt-item .icon i {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+.kontakt-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-grey1);
+}
+
+/* Social-Icons nebeneinander */
+.kontakt-icons {
+  margin-top: 2rem;
+}
+
+.kontakt-icons .kontakt-icon {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.kontakt-icons .kontakt-icon a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid var(--color-secondary);
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.kontakt-icons .kontakt-icon a:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+/* Rechte Spalte – Formular */
+.right-kontakt .kontakt-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.kontakt-form .i-c-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.kontakt-form input,
+.kontakt-form textarea {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-grey5);
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: var(--color-grey1);
+  resize: vertical;
+}
+.kontakt-form input::placeholder,
+.kontakt-form textarea::placeholder {
+  color: var(--color-grey1);
+}
+
+/* Spotify-Style “Senden”-Button */
+.submit-btn {
+  margin-top: 1rem;
+}
+.submit-btn button {
+  padding: 0.75rem 2rem;
+  background-color: transparent;
+  border: 2px solid var(--color-secondary);
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-white);
+  transition: background-color 0.3s, color 0.3s;
+}
+.submit-btn button:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
