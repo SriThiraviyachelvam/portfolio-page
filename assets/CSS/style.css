@@ -864,16 +864,7 @@ section {
   position: relative;
   padding-bottom: 0.5rem;
 }
-.left-kontakt h4::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 4px;
-  background-color: var(--color-secondary);
-  border-radius: 2px;
-}
+
 .left-kontakt p {
   font-size: 1.05rem;
   line-height: 1.8rem;
