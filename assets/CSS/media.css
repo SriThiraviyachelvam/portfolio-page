@@ -1,0 +1,164 @@
+/* ============================================================================
+   0) Global: fixierte Sidebar immer freihalten
+   – rechts an allen Inhalten mindestens 48px (Icon-Box) + 1rem Puffer
+   ============================================================================
+*/
+.main-content,
+.section,
+.kontakt-container,
+.zukunft-content {
+  /* nur rechts so viel Platz lassen, links bleibt unverändert */
+  padding-right: calc(48px + 1rem) !important;
+}
+
+/* =============================================================================
+   1) Labels im Kontaktbereich nie umbrechen („E-Mail“ bleibt in einer Zeile)
+   =============================================================================
+*/
+.kontakt-item .label {
+  white-space: nowrap;
+}
+
+/* =============================================================================
+   2) Extra small – Smartphones ≤575.98px
+   =============================================================================
+*/
+@media (max-width: 575.98px) {
+  section {
+    padding: 2rem 4vw !important;
+  }
+
+  .header-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ueber-mich-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kontakt-content-con {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .zukunft {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+}
+
+/* =============================================================================
+   3) Small – Tablets 576px–767.98px
+   =============================================================================
+*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  section {
+    padding: 3rem 6vw !important;
+  }
+
+  .header-content {
+    grid-template-columns: 1fr;
+  }
+
+  .ueber-mich-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .kontakt-content-con {
+    grid-template-columns: 1fr;
+  }
+
+  .zukunft {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* =============================================================================
+   4) Medium – Tablets & kleine Laptops 768px–991.98px
+   =============================================================================
+*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  section {
+    padding: 4rem 8vw !important;
+  }
+
+  .header-content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ueber-mich-grid {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .kontakt-content-con {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .zukunft {
+    grid-template-columns: repeat(4, minmax(150px, 1fr)) !important;
+  }
+}
+
+/* =============================================================================
+   5) Large – Laptops 992px–1199.98px
+   =============================================================================
+*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  section {
+    padding: 4rem 10vw !important;
+  }
+
+  .ueber-mich-grid {
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .kontakt-content-con {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .zukunft {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* =============================================================================
+   6) X-Large – Desktops ≥1200px
+   =============================================================================
+*/
+@media (min-width: 1200px) {
+  section {
+    padding: 4rem 12vw !important;
+  }
+
+  .ueber-mich-grid {
+    grid-template-columns: 1fr 1.2fr 1.5fr;
+  }
+
+  .kontakt-content-con {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .zukunft {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* =============================================================================
+   7) Speziell für „Über-mich“: noch mehr rechtes Padding, damit die Sidebar 
+   nie in den Inhalt hineinragt (Verhindert Überlappung)
+   =============================================================================
+*/
+@media (min-width: 768px) {
+  /* auf Tablets und größere Geräte */
+  #ueber-mich {
+    /* zusätzliche 48px (Sidebar) + 1rem Puffer */
+    padding-right: calc(48px + 1rem) !important;
+  }
+}
+/* (für ganz kleine Screens übernimmt ohnehin die 1-Spalten-Regel) */
