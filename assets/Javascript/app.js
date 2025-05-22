@@ -1,6 +1,3 @@
-// -----------------------------------------------------------------------------
-// 1) Page-Transition–Logik
-// -----------------------------------------------------------------------------
 function PageTransitions() {
   const sections = document.querySelectorAll(".section");
   const sectBtns = document.querySelectorAll(".control");
@@ -19,14 +16,11 @@ function PageTransitions() {
   });
 }
 
-// -----------------------------------------------------------------------------
-// 2) Countdown–Daten direkt im JS
-// -----------------------------------------------------------------------------
 const countdownData = {
   bachelor: "2026-07-05",
   military: "2026-08-15",
   master: "2027-09-15",
-  startup: "2030-010-20",
+  startup: "2030-10-20",
 };
 
 function initCountdowns() {
@@ -36,7 +30,6 @@ function initCountdowns() {
     const targetDate = countdownData[key];
     if (!targetDate) return;
 
-    // Countdown-Container anlegen, wenn noch nicht da
     let c = item.querySelector(".countdown");
     if (!c) {
       c = document.createElement("div");
@@ -44,7 +37,6 @@ function initCountdowns() {
       item.querySelector(".zukunft-text").prepend(c);
     }
 
-    // sofort und dann jede Sekunde updaten
     updateCountdown(targetDate, c);
     setInterval(() => updateCountdown(targetDate, c), 1000);
   });
@@ -68,9 +60,6 @@ function updateCountdown(targetDateStr, el) {
   el.textContent = `${days} Tage ${hours}h ${minutes}m ${seconds}s`;
 }
 
-// -----------------------------------------------------------------------------
-// 3) DOM ready: alles initialisieren
-// -----------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   PageTransitions();
   initCountdowns();

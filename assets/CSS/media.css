@@ -1,18 +1,25 @@
 /* ============================================================================
-   0) Global: fixierte Sidebar immer freihalten
-   – rechts an allen Inhalten mindestens 48px (Icon-Box) + 1rem Puffer
-   ============================================================================
-*/
+   Global
+   ============================================================================ */
+
+/* Platz für die fixe Sidebar rechts freihalten */
 .main-content,
 .section,
 .kontakt-container,
 .zukunft-content {
-  /* nur rechts so viel Platz lassen, links bleibt unverändert */
-  padding-right: calc(48px + 1rem) !important;
+  padding-right: calc(48px + 1rem);
+}
+
+/* Bilder und Media-Elemente nie über ihren Container hinausstrecken */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* =============================================================================
-   1) Labels im Kontaktbereich nie umbrechen („E-Mail“ bleibt in einer Zeile)
+   Kontakt-Labels nie umbrechen
    =============================================================================
 */
 .kontakt-item .label {
@@ -20,43 +27,64 @@
 }
 
 /* =============================================================================
-   2) Extra small – Smartphones ≤575.98px
+   0) Portfolio-Grid – immer flexibel
+   =============================================================================
+*/
+.portfolios {
+  display: grid;
+  gap: 2.5rem;
+  /* Baseline: auto-fit, so füllt immer die maximale Spaltenzahl */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* =============================================================================
+   1) Extra small – Smartphones ≤ 575.98px
    =============================================================================
 */
 @media (max-width: 575.98px) {
   section {
-    padding: 2rem 4vw !important;
+    padding: 2rem 4vw;
   }
 
+  /* Header → alles untereinander */
   .header-content {
     display: flex;
     flex-direction: column;
   }
 
+  /* Über-mich → 1 Spalte */
   .ueber-mich-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
+  /* Kontakt → 1 Spalte */
   .kontakt-content-con {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
 
+  /* Zukunft → 1 Spalte */
   .zukunft {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  /* Portfolio → 1 Spalte */
+  .portfolios {
+    grid-template-columns: 1fr;
   }
 }
 
 /* =============================================================================
-   3) Small – Tablets 576px–767.98px
+   2) Small – Tablets 576px–767.98px
    =============================================================================
 */
 @media (min-width: 576px) and (max-width: 767.98px) {
   section {
-    padding: 3rem 6vw !important;
+    padding: 3rem 6vw;
   }
 
   .header-content {
@@ -73,17 +101,21 @@
   }
 
   .zukunft {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .portfolios {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* =============================================================================
-   4) Medium – Tablets & kleine Laptops 768px–991.98px
+   3) Medium – Tablets & kleine Laptops 768px–991.98px
    =============================================================================
 */
 @media (min-width: 768px) and (max-width: 991.98px) {
   section {
-    padding: 4rem 8vw !important;
+    padding: 4rem 8vw;
   }
 
   .header-content {
@@ -100,17 +132,21 @@
   }
 
   .zukunft {
-    grid-template-columns: repeat(4, minmax(150px, 1fr)) !important;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+  }
+
+  .portfolios {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* =============================================================================
-   5) Large – Laptops 992px–1199.98px
+   4) Large – Laptops 992px–1199.98px
    =============================================================================
 */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   section {
-    padding: 4rem 10vw !important;
+    padding: 4rem 10vw;
   }
 
   .ueber-mich-grid {
@@ -123,17 +159,21 @@
   }
 
   .zukunft {
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .portfolios {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 /* =============================================================================
-   6) X-Large – Desktops ≥1200px
+   5) X-Large – Desktops ≥1200px
    =============================================================================
 */
 @media (min-width: 1200px) {
   section {
-    padding: 4rem 12vw !important;
+    padding: 4rem 12vw;
   }
 
   .ueber-mich-grid {
@@ -145,20 +185,32 @@
   }
 
   .zukunft {
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .portfolios {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* =============================================================================
-   7) Speziell für „Über-mich“: noch mehr rechtes Padding, damit die Sidebar 
-   nie in den Inhalt hineinragt (Verhindert Überlappung)
-   =============================================================================
-*/
+/* 7) Speziell für „Über mich“ auf breiteren Smartphones/Tablets – immer Abstand zur Sidebar */
 @media (min-width: 768px) {
-  /* auf Tablets und größere Geräte */
   #ueber-mich {
-    /* zusätzliche 48px (Sidebar) + 1rem Puffer */
     padding-right: calc(48px + 1rem) !important;
   }
 }
-/* (für ganz kleine Screens übernimmt ohnehin die 1-Spalten-Regel) */
+
+/* 8) Zusatz-Abstand rechts auf Laptops ≤1199px, damit die Sidebar nicht überlappt */
+@media (max-width: 1199.98px) {
+  /* alle Sektionen inklusive Über mich */
+  .section,
+  #ueber-mich,
+  .ueber-mich-wrapper {
+    padding-right: calc(48px + 1rem) !important;
+  }
+}
+
+/* Optional: verhindert, dass Scrollbars unerwartet in den Inhalt "hineinrutschen" */
+html {
+  scrollbar-gutter: stable both-edges;
+}

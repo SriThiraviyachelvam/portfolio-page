@@ -815,33 +815,13 @@ section {
   margin: 0 auto;
   padding: 4rem 12vw;
 }
+
 .kontakt-container .main-title {
-  text-align: center;
+  text-align: left;
   margin-bottom: 3rem;
 }
 
 /* Layout: linke Info-Spalte | rechte Formular-Spalte */
-.kontakt-content-con {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: start;
-}
-
-/* ========================
-   Kontaktbereich komplett
-   ======================== */
-
-/* Basis-Container & Grid */
-.kontakt-container {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 4rem 12vw;
-}
-.kontakt-container .main-title {
-  text-align: center;
-  margin-bottom: 3rem;
-}
 .kontakt-content-con {
   display: grid;
   grid-template-columns: 1fr 1fr;
