@@ -214,3 +214,41 @@ video {
 html {
   scrollbar-gutter: stable both-edges;
 }
+
+/* ====================================================================
+   Countdown: Optimale Lesbarkeit & Layout-Sicherheit für alle Devices
+   ==================================================================== */
+
+/* Smartphones: Countdown notfalls umbrechen & kleiner */
+@media (max-width: 575.98px) {
+  .zukunft-item .countdown {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.7rem 0.5rem 0.62rem;
+    min-width: 0;
+    white-space: normal; /* Zeilenumbruch erlauben */
+    text-overflow: unset;
+    justify-content: flex-start; /* linksbündig falls umgebrochen */
+  }
+}
+
+/* Tablets (quer, mittlere Screens): Countdown leicht kleiner & flexibel */
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .zukunft-item .countdown {
+    font-size: 1rem;
+    min-width: 0;
+    white-space: nowrap;
+    max-width: 98%;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+
+/* Laptops & grösser: Standard bleibt (Timer immer eine Zeile) */
+@media (min-width: 992px) {
+  .zukunft-item .countdown {
+    font-size: 1.03rem;
+    min-width: 210px; /* genug Platz für „1975 Tage 23h 59m 59s“ */
+    max-width: 98%;
+    white-space: nowrap;
+  }
+}

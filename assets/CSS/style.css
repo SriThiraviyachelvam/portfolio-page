@@ -817,7 +817,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: "Poppins", "Segoe UI Emoji", "Apple Color Emoji",
+    "Noto Color Emoji", Arial, sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.007em;
