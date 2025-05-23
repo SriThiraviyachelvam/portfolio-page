@@ -18,7 +18,7 @@ function PageTransitions() {
 
 const countdownData = {
   bachelor: "2026-07-05",
-  military: "2026-08-15",
+  military: "2026-09-15",
   master: "2027-09-15",
   startup: "2030-10-20",
 };
