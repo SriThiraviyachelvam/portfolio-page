@@ -216,39 +216,77 @@ html {
 }
 
 /* ====================================================================
-   Countdown: Optimale Lesbarkeit & Layout-Sicherheit für alle Devices
+   Countdown: Media Queries für maximale Kompatibilität & Layout-Sicherheit
    ==================================================================== */
 
-/* Smartphones: Countdown notfalls umbrechen & kleiner */
+/* Smartphones: Countdown darf umbrechen & ist kleiner */
 @media (max-width: 575.98px) {
   .zukunft-item .countdown {
     font-size: 0.95rem;
-    padding: 0.5rem 0.7rem 0.5rem 0.62rem;
-    min-width: 0;
+    padding: 0.5rem 0.6rem 0.5rem 0.5rem;
+    min-width: 0 !important;
+    max-width: 100% !important;
     white-space: normal; /* Zeilenumbruch erlauben */
+    word-break: break-word; /* notfalls innerhalb von Wörtern umbrechen */
     text-overflow: unset;
-    justify-content: flex-start; /* linksbündig falls umgebrochen */
+    justify-content: flex-start;
+  }
+  .countdown-icon {
+    font-size: 1em;
+    margin-right: 0.25em;
   }
 }
 
-/* Tablets (quer, mittlere Screens): Countdown leicht kleiner & flexibel */
+/* Tablets (Hoch-/Querformat): Countdown flexibel, mittlere Schrift */
 @media (min-width: 576px) and (max-width: 991.98px) {
   .zukunft-item .countdown {
     font-size: 1rem;
-    min-width: 0;
-    white-space: nowrap;
-    max-width: 98%;
-    padding-left: 0.8rem;
-    padding-right: 0.8rem;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    white-space: nowrap; /* Keine Umbrüche */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+  .countdown-icon {
+    font-size: 1.08em;
   }
 }
 
-/* Laptops & grösser: Standard bleibt (Timer immer eine Zeile) */
+/* Laptops & grösser: Countdown immer auf einer Zeile, Mindestbreite */
 @media (min-width: 992px) {
   .zukunft-item .countdown {
-    font-size: 1.03rem;
-    min-width: 210px; /* genug Platz für „1975 Tage 23h 59m 59s“ */
-    max-width: 98%;
+    font-size: 1.07rem;
+    min-width: 200px;
+    max-width: 100% !important;
     white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .countdown-icon {
+    font-size: 1.1em;
+  }
+}
+
+/* Winzige Smartphones (Notch, Mini-Displays, z.B. iPhone SE) */
+@media (max-width: 370px) {
+  .zukunft-item .countdown {
+    font-size: 0.88rem;
+    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+    word-break: break-all;
+  }
+  .countdown-icon {
+    font-size: 0.9em;
+  }
+}
+
+/* Sicherheit: Countdown-Inhalt nie rauslaufen lassen, Flexbox-Bugs vorbeugen */
+@media (max-width: 991.98px) {
+  .zukunft-item .countdown,
+  .zukunft-item .countdown * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
