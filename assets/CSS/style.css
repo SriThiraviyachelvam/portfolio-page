@@ -805,6 +805,47 @@ section {
   font-size: 1rem;
 }
 
+.zukunft-item .countdown {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.15rem 0.6rem 1.08rem;
+  display: flex;
+  align-items: center;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 1.09rem;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  color: #1db954;
+  background: linear-gradient(180deg, #171a1b 90%, #202624 100%);
+  border-radius: 1.8rem;
+  border: 1.5px solid #1db954;
+  box-shadow: 0 2px 16px rgba(29, 185, 84, 0.11);
+  text-align: left;
+  user-select: none;
+  white-space: nowrap;
+  min-width: unset;
+  width: fit-content;
+  max-width: 90%;
+  transition: box-shadow 0.2s, transform 0.2s;
+  gap: 0.65em; /* Abstand zwischen Icon und Text */
+}
+
+.zukunft-item .countdown:before {
+  content: "⏳";
+  font-size: 1.16em;
+  color: #22ff80;
+  vertical-align: middle;
+  line-height: 1;
+  font-weight: 500;
+  filter: drop-shadow(0 1px 3px #222);
+  opacity: 0.88;
+}
+
+.zukunft-item .countdown:hover {
+  box-shadow: 0 0 0 2px #1db954, 0 4px 20px rgba(29, 185, 84, 0.18);
+  background: #191a1c;
+  color: #22ff80;
+}
+
 /* ========================
    Kontaktbereich
    ======================== */
