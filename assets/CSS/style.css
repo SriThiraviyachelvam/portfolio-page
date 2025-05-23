@@ -716,6 +716,7 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+  align-items: stretch; /* Karten immer gleich hoch */
 }
 
 /* Einzelne Zukunftskarte */
@@ -727,6 +728,9 @@ section {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 490px; /* Minimum-Höhe für optische Einheit */
 }
 
 .zukunft-item:hover {
@@ -805,44 +809,46 @@ section {
   font-size: 1rem;
 }
 
+/* Countdown Timer: Spotify-Glow und perfekte Ausrichtung */
 .zukunft-item .countdown {
   margin-top: 1.5rem;
-  padding: 0.6rem 1.15rem 0.6rem 1.08rem;
+  margin-bottom: 1.2rem; /* gleichmäßiger Abstand unten */
+  padding: 0.65rem 1.2rem 0.65rem 1.08rem;
   display: flex;
   align-items: center;
   font-family: "Poppins", Arial, sans-serif;
-  font-size: 1.09rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  letter-spacing: 0.005em;
+  letter-spacing: 0.007em;
   color: #1db954;
-  background: linear-gradient(180deg, #171a1b 90%, #202624 100%);
+  background: linear-gradient(180deg, #171a1b 85%, #222927 100%);
   border-radius: 1.8rem;
-  border: 1.5px solid #1db954;
-  box-shadow: 0 2px 16px rgba(29, 185, 84, 0.11);
+  border: 1.7px solid #1db954;
+  box-shadow: 0 2px 18px rgba(29, 185, 84, 0.12);
   text-align: left;
   user-select: none;
   white-space: nowrap;
-  min-width: unset;
   width: fit-content;
   max-width: 90%;
-  transition: box-shadow 0.2s, transform 0.2s;
-  gap: 0.65em; /* Abstand zwischen Icon und Text */
+  transition: box-shadow 0.2s, transform 0.2s, color 0.2s, background 0.2s;
+  gap: 0.7em;
 }
 
 .zukunft-item .countdown:before {
   content: "⏳";
-  font-size: 1.16em;
+  font-size: 1.13em;
   color: #22ff80;
   vertical-align: middle;
   line-height: 1;
   font-weight: 500;
-  filter: drop-shadow(0 1px 3px #222);
-  opacity: 0.88;
+  filter: drop-shadow(0 1px 3px #1db95477);
+  opacity: 0.92;
+  margin-right: 0.15em;
 }
 
 .zukunft-item .countdown:hover {
-  box-shadow: 0 0 0 2px #1db954, 0 4px 20px rgba(29, 185, 84, 0.18);
-  background: #191a1c;
+  box-shadow: 0 0 0 2px #1db954, 0 6px 22px 0 #23ea6f2c;
+  background: linear-gradient(180deg, #1e2124 90%, #242e28 100%);
   color: #22ff80;
 }
 
