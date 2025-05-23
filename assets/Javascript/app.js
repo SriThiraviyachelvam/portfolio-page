@@ -73,8 +73,14 @@ function updateCountdown(targetDateStr, el) {
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
 
-  // Nur den Text aktualisieren
-  textSpan.textContent = `${days} Tage ${hours}h ${minutes}m ${seconds}s`;
+  // führende Null für Sekunden:
+  const secStr = String(seconds).padStart(2, "0");
+
+  // optional auch für Minuten/Stunden, wenn du möchtest:
+  // const minStr = String(minutes).padStart(2, "0");
+  // const hourStr = String(hours).padStart(2, "0");
+
+  textSpan.textContent = `${days} Tage ${hours}h ${minutes}m ${secStr}s`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {

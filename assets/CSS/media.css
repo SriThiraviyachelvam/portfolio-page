@@ -1,5 +1,5 @@
-/* ============================================================================  
-   Global  
+/* ============================================================================
+   Global
    ============================================================================ */
 
 /* Platz für die fixe Sidebar rechts freihalten */
@@ -18,64 +18,70 @@ video {
   display: block;
 }
 
-/* Kontakt-Labels nie umbrechen */
+/* =============================================================================
+   Kontakt-Labels nie umbrechen
+   =============================================================================
+*/
 .kontakt-item .label {
   white-space: nowrap;
 }
 
-/* Portfolio-Grid – immer flexibel */
+/* =============================================================================
+   0) Portfolio-Grid – immer flexibel
+   =============================================================================
+*/
 .portfolios {
   display: grid;
   gap: 2.5rem;
+  /* Baseline: auto-fit, so füllt immer die maximale Spaltenzahl */
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-/* ============================================================================  
-   1) Extra small – Smartphones ≤ 575.98px  
-   ============================================================================ */
+/* =============================================================================
+   1) Extra small – Smartphones ≤ 575.98px
+   =============================================================================
+*/
 @media (max-width: 575.98px) {
   section {
     padding: 2rem 4vw;
   }
 
+  /* Header → alles untereinander */
   .header-content {
     display: flex;
     flex-direction: column;
   }
 
-  /* Über mich: 1 Spalte, Grid-Zellen oben ausrichten */
+  /* Über-mich → 1 Spalte */
   .ueber-mich-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    align-items: start;
-  }
-  .ueber-mich-grid > * {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 
+  /* Kontakt → 1 Spalte */
   .kontakt-content-con {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
+  /* Zukunft → 1 Spalte */
   .zukunft {
-    display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
+  /* Portfolio → 1 Spalte */
   .portfolios {
     grid-template-columns: 1fr;
   }
 }
 
-/* ============================================================================  
-   2) Small – Tablets 576px–767.98px  
-   ============================================================================ */
+/* =============================================================================
+   2) Small – Tablets 576px–767.98px
+   =============================================================================
+*/
 @media (min-width: 576px) and (max-width: 767.98px) {
   section {
     padding: 3rem 6vw;
@@ -86,15 +92,8 @@ video {
   }
 
   .ueber-mich-grid {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    align-items: start;
-  }
-  .ueber-mich-grid > * {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 
   .kontakt-content-con {
@@ -110,9 +109,10 @@ video {
   }
 }
 
-/* ============================================================================  
-   3) Medium – Tablets & kleine Laptops 768px–991.98px  
-   ============================================================================ */
+/* =============================================================================
+   3) Medium – Tablets & kleine Laptops 768px–991.98px
+   =============================================================================
+*/
 @media (min-width: 768px) and (max-width: 991.98px) {
   section {
     padding: 4rem 8vw;
@@ -125,12 +125,6 @@ video {
   .ueber-mich-grid {
     grid-template-columns: 1.5fr 1fr 1fr;
     gap: 2rem;
-    align-items: start;
-  }
-  .ueber-mich-grid > * {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 
   .kontakt-content-con {
@@ -146,9 +140,10 @@ video {
   }
 }
 
-/* ============================================================================  
-   4) Large – Laptops 992px–1199.98px  
-   ============================================================================ */
+/* =============================================================================
+   4) Large – Laptops 992px–1199.98px
+   =============================================================================
+*/
 @media (min-width: 992px) and (max-width: 1199.98px) {
   section {
     padding: 4rem 10vw;
@@ -157,12 +152,6 @@ video {
   .ueber-mich-grid {
     grid-template-columns: 1fr 1.2fr 1fr;
     gap: 2.5rem;
-    align-items: start;
-  }
-  .ueber-mich-grid > * {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 
   .kontakt-content-con {
@@ -178,9 +167,10 @@ video {
   }
 }
 
-/* ============================================================================  
-   5) X-Large – Desktops ≥1200px  
-   ============================================================================ */
+/* =============================================================================
+   5) X-Large – Desktops ≥1200px
+   =============================================================================
+*/
 @media (min-width: 1200px) {
   section {
     padding: 4rem 12vw;
@@ -188,12 +178,6 @@ video {
 
   .ueber-mich-grid {
     grid-template-columns: 1fr 1.2fr 1.5fr;
-    align-items: start;
-  }
-  .ueber-mich-grid > * {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 
   .kontakt-content-con {
@@ -209,15 +193,16 @@ video {
   }
 }
 
-/* Speziell für „Über mich“ auf breiteren Smartphones/Tablets – Abstand zur Sidebar */
+/* 7) Speziell für „Über mich“ auf breiteren Smartphones/Tablets – immer Abstand zur Sidebar */
 @media (min-width: 768px) {
   #ueber-mich {
     padding-right: calc(48px + 1rem) !important;
   }
 }
 
-/* Zusatz-Abstand rechts auf Laptops ≤1199px, damit die Sidebar nicht überlappt */
+/* 8) Zusatz-Abstand rechts auf Laptops ≤1199px, damit die Sidebar nicht überlappt */
 @media (max-width: 1199.98px) {
+  /* alle Sektionen inklusive Über mich */
   .section,
   #ueber-mich,
   .ueber-mich-wrapper {
@@ -230,51 +215,56 @@ html {
   scrollbar-gutter: stable both-edges;
 }
 
-/* ====================================================================  
-   Countdown: Media Queries für maximale Kompatibilität & Layout-Sicherheit  
+/* ====================================================================
+   Countdown: Media Queries für maximale Kompatibilität & Layout-Sicherheit
    ==================================================================== */
 
 /* Smartphones: Countdown darf umbrechen & ist kleiner */
 @media (max-width: 575.98px) {
   .zukunft-item .countdown {
     font-size: 0.95rem;
-    padding: 0.5rem 0.6rem;
-    /* auf kleinen Phones erlauben, dass der Text umbricht */
-    white-space: normal;
-    word-break: break-word;
-    overflow: visible;
+    padding: 0.5rem 0.6rem 0.5rem 0.5rem;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    white-space: normal; /* Zeilenumbruch erlauben */
+    word-break: break-word; /* notfalls innerhalb von Wörtern umbrechen */
+    text-overflow: unset;
+    justify-content: flex-start;
   }
-  .zukunft-item .countdown-icon {
+  .countdown-icon {
     font-size: 1em;
     margin-right: 0.25em;
   }
 }
 
-/* Tablets (576px–991.98px): Countdown in einer Zeile, mittlere Schrift */
+/* Tablets (Hoch-/Querformat): Countdown flexibel, mittlere Schrift */
 @media (min-width: 576px) and (max-width: 991.98px) {
   .zukunft-item .countdown {
     font-size: 1rem;
-    padding: 0.6rem 0.8rem;
-    white-space: nowrap;
-    overflow: visible;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    white-space: nowrap; /* Keine Umbrüche */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
   }
-  .zukunft-item .countdown-icon {
+  .countdown-icon {
     font-size: 1.08em;
   }
 }
 
-/* Laptops & größer (≥992px): Countdown immer komplett sichtbar */
+/* Laptops & grösser: Countdown immer auf einer Zeile, Mindestbreite */
 @media (min-width: 992px) {
   .zukunft-item .countdown {
     font-size: 1.07rem;
-    /* passt sich Inhalt an, aber niemals über Karte hinausragen */
-    display: inline-flex;
-    width: auto;
-    max-width: calc(100% - 2rem);
+    min-width: 200px;
+    max-width: 100% !important;
     white-space: nowrap;
-    overflow: visible;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
-  .zukunft-item .countdown-icon {
+  .countdown-icon {
     font-size: 1.1em;
   }
 }
@@ -283,16 +273,15 @@ html {
 @media (max-width: 370px) {
   .zukunft-item .countdown {
     font-size: 0.88rem;
-    padding: 0.3rem;
+    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
     word-break: break-all;
-    overflow: visible;
   }
-  .zukunft-item .countdown-icon {
+  .countdown-icon {
     font-size: 0.9em;
   }
 }
 
-/* Sicherheit: Flexbox-Bugs vorbeugen, Countdown-Inhalt nie rauslaufen */
+/* Sicherheit: Countdown-Inhalt nie rauslaufen lassen, Flexbox-Bugs vorbeugen */
 @media (max-width: 991.98px) {
   .zukunft-item .countdown,
   .zukunft-item .countdown * {
