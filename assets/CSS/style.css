@@ -788,28 +788,19 @@ section {
 }
 
 /* Countdown Timer: Spotify-Glow und perfekte Ausrichtung */
-/* 1) Text-Container zum Flex-Column machen */
-.zukunft-item .zukunft-text {
-  display: flex;
-  flex-direction: column;
-}
-
-/* 2) Countdown zurück in den Flow holen */
+/* --- Basis: Countdown wie gehabt in den Flow holen --- */
 .zukunft-item .zukunft-text .countdown {
-  /* --- statt max-width:100% und overflow:hidden: ---
-     erlauben, dass die Box so breit wird, wie sie der Inhalt braucht */
   display: inline-flex;
-  width: fit-content; /* Chrome/FF/WebKit verstehen das mittlerweile alle */
-  /* für Legacy: */
+  width: fit-content; /* passt sich dem Inhalt an */
+  /* Fallbacks, falls ältere Browser: */
   /* width: -moz-fit-content; */
   /* width: -webkit-fit-content; */
 
-  /* kein künstliches Begrenzen mehr */
+  /* keine künstlichen Grenzen oder Abschneiden mehr */
   max-width: none;
   overflow: visible;
   text-overflow: unset;
 
-  /* alles andere bleibt wie gehabt */
   white-space: nowrap;
   align-self: flex-start;
   margin-top: 1.2rem;
@@ -830,45 +821,51 @@ section {
   transition: background 0.2s, box-shadow 0.2s, color 0.2s;
 }
 
-/* 3) Sanduhr-Icon weiterhin rotieren lassen */
+/* Sanduhr-Icon: fester Quadrat-Container, saubere Rotation */
 @keyframes sanduhr-rotate {
-  0% {
+  from {
     transform: rotate(0deg);
   }
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
 .zukunft-item .countdown-icon {
-  /* statt inline-block: inline-flex, damit wir Breite/Höhe zentriert nutzen können */
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  /* feste Box-Größe – an Schriftgröße anpassen */
   width: 1.3em;
   height: 1.3em;
-
-  /* Drehmittelpunkt in der Mitte der Box */
   transform-origin: center center;
-
-  /* Animation nur hier! */
   animation: sanduhr-rotate 4.5s linear infinite;
-
-  /* den Rest kannst Du so lassen */
   opacity: 0.92;
   filter: drop-shadow(0 1px 3px #1db95477);
   margin-right: 0.25em;
 }
 
-/* 4) Hover-Effekt wie gehabt */
+/* Hover-Effekt unverändert */
 .zukunft-item .zukunft-text .countdown:hover {
   background: linear-gradient(180deg, #1e2124 90%, #242e28 100%);
   box-shadow: 0 0 0 2px #1db954, 0 6px 22px 0 #23ea6f2c;
   color: #22ff80;
 }
 
-/* 5) Responsive Tweaks */
+/* --- NEUE MEDIA-QUERY für mittlere Bildschirmbreiten (z.B. Laptop) --- */
+@media (max-width: 1400px) {
+  .zukunft-item .zukunft-text .countdown {
+    font-size: 0.95rem; /* etwas kleinere Schrift */
+    padding: 0.5rem 0.8rem; /* engeres Padding */
+    gap: 0.4em;
+  }
+  .zukunft-item .countdown-icon {
+    font-size: 0.9em; /* Icon minimal kleiner */
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.2em;
+  }
+}
+
+/* schon vorhandene Queries für Tablets und Handys */
 @media (max-width: 768px) {
   .zukunft-item .zukunft-text .countdown {
     font-size: 0.95rem;
@@ -885,8 +882,6 @@ section {
     font-size: 0.9rem;
     padding: 0.4rem 0.6rem;
     gap: 0.3em;
-    /* falls du noch mehr Platz brauchst:
-       max-width: calc(100% - 1rem); */
   }
   .zukunft-item .countdown-icon {
     font-size: 0.85em;
