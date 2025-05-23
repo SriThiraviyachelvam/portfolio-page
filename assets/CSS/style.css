@@ -812,10 +812,11 @@ section {
 /* Countdown Timer: Spotify-Glow und perfekte Ausrichtung */
 .zukunft-item .countdown {
   margin-top: 1.5rem;
-  margin-bottom: 1.2rem; /* gleichmäßiger Abstand unten */
+  margin-bottom: 1.2rem;
   padding: 0.65rem 1.2rem 0.65rem 1.08rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-family: "Poppins", Arial, sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
@@ -825,17 +826,32 @@ section {
   border-radius: 1.8rem;
   border: 1.7px solid #1db954;
   box-shadow: 0 2px 18px rgba(29, 185, 84, 0.12);
-  text-align: left;
   user-select: none;
-  white-space: nowrap;
-  width: fit-content;
-  max-width: 90%;
+  width: 100%;
+  min-width: 0; /* <<< für Flexbox wichtig */
+  max-width: 100%; /* sichert den Inhalt in der Box */
+  white-space: nowrap; /* nie umbrechen! */
+  overflow: hidden; /* alles Überflüssige ausblenden */
+  text-overflow: ellipsis; /* ... falls zu lang */
+  text-align: center;
   transition: box-shadow 0.2s, transform 0.2s, color 0.2s, background 0.2s;
   gap: 0.7em;
 }
 
+.countdown-icon {
+  flex-shrink: 0; /* Icon schrumpft NIE */
+  margin-right: 0.3em;
+  font-size: 1.13em;
+  color: #22ff80;
+  vertical-align: middle;
+  line-height: 1;
+  font-weight: 500;
+  filter: drop-shadow(0 1px 3px #1db95477);
+  opacity: 0.92;
+  animation: sanduhr-rotate 4s linear infinite;
+}
+
 .zukunft-item .countdown:before {
-  content: "⏳";
   font-size: 1.13em;
   color: #22ff80;
   vertical-align: middle;
@@ -844,6 +860,28 @@ section {
   filter: drop-shadow(0 1px 3px #1db95477);
   opacity: 0.92;
   margin-right: 0.15em;
+}
+
+.countdown-icon {
+  flex-shrink: 0; /* Icon schrumpft NIE */
+  margin-right: 0.3em;
+  font-size: 1.13em;
+  color: #22ff80;
+  vertical-align: middle;
+  line-height: 1;
+  font-weight: 500;
+  filter: drop-shadow(0 1px 3px #1db95477);
+  opacity: 0.92;
+  animation: sanduhr-rotate 4s linear infinite;
+}
+
+@keyframes sanduhr-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .zukunft-item .countdown:hover {

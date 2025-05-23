@@ -43,12 +43,28 @@ function initCountdowns() {
 }
 
 function updateCountdown(targetDateStr, el) {
+  // Prüfen, ob das Sanduhr-Icon und der Text schon vorhanden sind
+  let icon = el.querySelector(".countdown-icon");
+  let textSpan = el.querySelector(".countdown-text");
+
+  // NUR beim allerersten Mal erzeugen!
+  if (!icon || !textSpan) {
+    el.innerHTML = ""; // Nur einmal, dann nie wieder!
+    icon = document.createElement("span");
+    icon.className = "countdown-icon";
+    icon.textContent = "⏳";
+    textSpan = document.createElement("span");
+    textSpan.className = "countdown-text";
+    el.appendChild(icon);
+    el.appendChild(textSpan);
+  }
+
   const now = new Date();
   const target = new Date(targetDateStr);
   const diff = target - now;
 
   if (diff <= 0) {
-    el.textContent = "Abgeschlossen 🎉";
+    textSpan.textContent = "Abgeschlossen 🎉";
     return;
   }
 
@@ -57,7 +73,8 @@ function updateCountdown(targetDateStr, el) {
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
 
-  el.textContent = `${days} Tage ${hours}h ${minutes}m ${seconds}s`;
+  // Nur den Text aktualisieren
+  textSpan.textContent = `${days} Tage ${hours}h ${minutes}m ${seconds}s`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
