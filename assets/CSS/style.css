@@ -229,10 +229,11 @@ section {
 }
 
 .btn-text {
-  padding: 1rem 1.6rem;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  padding: 1rem 1.6rem;
   background-color: var(--color-secondary);
+  white-space: nowrap; /* Tippfehler korrigiert */
 }
 
 .btn-icon {
@@ -788,7 +789,6 @@ section {
 }
 
 /* Countdown Timer: Spotify-Glow und perfekte Ausrichtung */
-/* 1. Sanduhr-Keyframes */
 @keyframes sanduhr-rotate {
   0% {
     transform: rotate(0deg);
@@ -851,14 +851,8 @@ section {
   justify-content: center;
   width: 1.3em;
   height: 1.3em;
-
-  /* 2) Drehpunkt auf die Box-Mitte legen */
   transform-origin: center center;
-
-  /* 3) Animation wie gehabt */
   animation: sanduhr-rotate 5s linear infinite;
-
-  /* Rest bleibt gleich */
   margin-right: 0.22em;
   font-size: 1.02em;
   line-height: 1;
