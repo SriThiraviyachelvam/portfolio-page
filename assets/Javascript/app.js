@@ -1,3 +1,6 @@
+/*———————————————————————————————*/
+/* 1) Page Transitions */
+/*———————————————————————————————*/
 function PageTransitions() {
   const sections = document.querySelectorAll(".section");
   const sectBtns = document.querySelectorAll(".control");
@@ -9,23 +12,23 @@ function PageTransitions() {
 
       const sectionId = this.dataset.id;
       sections.forEach((section) => section.classList.remove("active"));
-
       const targetSection = document.getElementById(sectionId);
       if (targetSection) targetSection.classList.add("active");
     });
   });
 }
 
+/*———————————————————————————————*/
+/* 2) Countdowns */
+/*———————————————————————————————*/
 const countdownData = {
   bachelor: "2026-07-05",
   military: "2026-09-15",
   master: "2027-09-15",
   startup: "2030-10-20",
 };
-
 function initCountdowns() {
-  const items = document.querySelectorAll(".zukunft-item");
-  items.forEach((item) => {
+  document.querySelectorAll(".zukunft-item").forEach((item) => {
     const key = item.dataset.key;
     const targetDate = countdownData[key];
     if (!targetDate) return;
@@ -36,54 +39,141 @@ function initCountdowns() {
       c.className = "countdown";
       item.querySelector(".zukunft-text").prepend(c);
     }
-
     updateCountdown(targetDate, c);
     setInterval(() => updateCountdown(targetDate, c), 1000);
   });
 }
-
 function updateCountdown(targetDateStr, el) {
-  // Prüfen, ob das Sanduhr-Icon und der Text schon vorhanden sind
   let icon = el.querySelector(".countdown-icon");
   let textSpan = el.querySelector(".countdown-text");
 
-  // NUR beim allerersten Mal erzeugen!
   if (!icon || !textSpan) {
-    el.innerHTML = ""; // Nur einmal, dann nie wieder!
+    el.innerHTML = "";
     icon = document.createElement("span");
-    icon.className = "countdown-icon";
-    icon.textContent = "⏳";
     textSpan = document.createElement("span");
+    icon.className = "countdown-icon";
     textSpan.className = "countdown-text";
-    el.appendChild(icon);
-    el.appendChild(textSpan);
+    icon.textContent = "⏳";
+    el.append(icon, textSpan);
   }
 
   const now = new Date();
-  const target = new Date(targetDateStr);
-  const diff = target - now;
-
+  const diff = new Date(targetDateStr) - now;
   if (diff <= 0) {
     textSpan.textContent = "Abgeschlossen 🎉";
     return;
   }
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff / 3600000) % 24);
+  const minutes = Math.floor((diff / 60000) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
 
-  // führende Null für Sekunden:
   const secStr = String(seconds).padStart(2, "0");
-
-  // optional auch für Minuten/Stunden, wenn du möchtest:
-  // const minStr = String(minutes).padStart(2, "0");
-  // const hourStr = String(hours).padStart(2, "0");
-
   textSpan.textContent = `${days} Tage ${hours}h ${minutes}m ${secStr}s`;
 }
 
+/*———————————————————————————————*/
+/* 3) Formular-Validierung */
+/*———————————————————————————————*/
+
+// Hilfsfunktionen
+function isValidEmail(val) {
+  return /\S+@\S+\.\S+/.test(val);
+}
+function hasMinLength(val, min) {
+  return val.trim().length >= min;
+}
+function setError(input, msg) {
+  const err = input.nextElementSibling;
+  if (err) err.textContent = msg;
+  input.classList.add("invalid");
+}
+function clearError(input) {
+  const err = input.nextElementSibling;
+  if (err) err.textContent = "";
+  input.classList.remove("invalid");
+}
+function showSuccess(msg) {
+  const div = document.querySelector(".success-message");
+  if (div) div.textContent = msg;
+}
+
+function initContactForm() {
+  const form = document.querySelector(".kontakt-form");
+  if (!form) return;
+  form.setAttribute("novalidate", "");
+
+  const fields = [
+    { el: form.elements.name, min: 2, msg: "Bitte min. 2 Zeichen." },
+    { el: form.elements.email, email: true, msg: "Ungültige E-Mail." },
+    { el: form.elements.subject, min: 5, msg: "Betreff min. 5 Zeichen." },
+    { el: form.elements.message, min: 15, msg: "Nachricht min. 15 Zeichen." },
+  ];
+
+  // Validierungsfunktion für ein einzelnes Feld
+  function validateField({ el, min, email, msg }) {
+    const span = el.nextElementSibling;
+    let ok = true;
+
+    if (email) {
+      ok = /\S+@\S+\.\S+/.test(el.value);
+    } else if (min) {
+      ok = el.value.trim().length >= min;
+    }
+
+    // Reset
+    el.classList.remove("invalid");
+    span.classList.remove("valid");
+    span.textContent = "";
+
+    if (!ok) {
+      el.classList.add("invalid");
+      span.textContent = msg;
+    } else {
+      span.textContent = "✓";
+      span.classList.add("valid");
+    }
+
+    return ok;
+  }
+
+  // 1) Live-Validation: bei jedem Tippen
+  fields.forEach((field) => {
+    field.el.addEventListener("input", () => validateField(field));
+  });
+
+  // 2) Final-Check beim Absenden
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let allValid = true;
+
+    fields.forEach((field) => {
+      const ok = validateField(field);
+      if (!ok) allValid = false;
+    });
+
+    if (allValid) {
+      form.reset();
+      showSuccess("Danke, ich melde mich bei dir! 🎉");
+
+      // Grüne Häkchen nach 3s wieder ausblenden
+      setTimeout(() => {
+        fields.forEach(({ el }) => {
+          const span = el.nextElementSibling;
+          span.textContent = "";
+          span.classList.remove("valid");
+        });
+      }, 3000);
+    }
+  });
+}
+
+/*———————————————————————————————*/
+/* 4) DOM ready */
+/*———————————————————————————————*/
 document.addEventListener("DOMContentLoaded", () => {
   PageTransitions();
   initCountdowns();
+  initContactForm();
 });

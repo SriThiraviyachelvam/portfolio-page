@@ -11,8 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=block"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
 
     <link
@@ -395,24 +397,51 @@
             </div>
 
             <div class="right-kontakt">
-              <form action="#" class="kontakt-form">
+              <form action="#" class="kontakt-form" id="contactForm" novalidate>
                 <div class="input-control i-c-2">
-                  <input type="text" required placeholder="Dein Name" />
-                  <input type="email" required placeholder="Deine E-Mail" />
+                  <div>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Dein Name"
+                      required
+                    />
+                    <span class="error-message"></span>
+                  </div>
+                  <div>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Deine E-Mail"
+                      required
+                    />
+                    <span class="error-message"></span>
+                  </div>
                 </div>
                 <div class="input-control">
-                  <input type="text" required placeholder="Betreff" />
+                  <input
+                    type="text"
+                    name="subject"
+                    placeholder="Betreff"
+                    required
+                  />
+                  <span class="error-message"></span>
                 </div>
                 <div class="input-control">
                   <textarea
+                    name="message"
                     cols="15"
                     rows="8"
                     placeholder="Deine Nachricht..."
+                    required
+                    minlength="10"
                   ></textarea>
+                  <span class="error-message"></span>
                 </div>
                 <div class="submit-btn">
                   <button type="submit">Senden</button>
                 </div>
+                <div class="success-message"></div>
               </form>
             </div>
           </div>
