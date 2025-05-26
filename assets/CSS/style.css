@@ -17,10 +17,11 @@
 /*---------------------------- Body--------------------------------------------- */
 body {
   background-color: var(--color-primary);
-  font-family: "Poppins", sans-serif;
-  font-size: 1.1rem;
   color: var(--color-white);
-  transition: all 0.4s ease-in-out;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem; /* bleibt erhalten */
+  line-height: 1.6; /* für bessere Lesbarkeit */
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 }
 
 a {
@@ -759,16 +760,18 @@ section {
 
 /* Einzelne Zukunftskarte */
 .zukunft-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100%;
+  min-height: 490px;
+
   background-color: var(--color-grey5);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  min-height: 490px; /* Minimum-Höhe für optische Einheit */
 }
 
 .zukunft-item:hover {
@@ -839,14 +842,6 @@ section {
   100% {
     transform: rotate(360deg);
   }
-}
-
-/* 2. Karten-Container: Flex-Layout, damit wir das Countdown-Element nach unten drücken können */
-.zukunft-item {
-  display: flex;
-  flex-direction: column;
-  /* Optional: Falls eure Karten in einer Zeile stehen, sorgt euer Wrapper dafür, 
-     dass alle gleich hoch sind (z.B. display: flex; align-items: stretch; auf dem Parent). */
 }
 
 /* 3. Countdown: Shrink-to-fit, verhindert Umbruch und überlauf */

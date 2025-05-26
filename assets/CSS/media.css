@@ -1,7 +1,3 @@
-/* ============================================================================
-   Global
-   ============================================================================ */
-
 /* Platz für die fixe Sidebar rechts freihalten */
 .main-content,
 .section,
@@ -18,70 +14,82 @@ video {
   display: block;
 }
 
-/* =============================================================================
-   Kontakt-Labels nie umbrechen
-   =============================================================================
-*/
+/* Kontakt-Labels nie umbrechen */
 .kontakt-item .label {
   white-space: nowrap;
 }
 
-/* =============================================================================
-   0) Portfolio-Grid – immer flexibel
-   =============================================================================
-*/
+/* Portfolio-Grid – immer flexibel */
 .portfolios {
   display: grid;
   gap: 2.5rem;
-  /* Baseline: auto-fit, so füllt immer die maximale Spaltenzahl */
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-/* =============================================================================
-   1) Extra small – Smartphones ≤ 575.98px
-   =============================================================================
-*/
+/* ============================================================================ 
+   1) Extra small – Smartphones ≤ 575.98px 
+   ============================================================================ */
 @media (max-width: 575.98px) {
+  /* Genereller Abstand */
   section {
     padding: 2rem 4vw;
   }
 
-  /* Header → alles untereinander */
+  /* Header → untereinander, Bild zentriert */
   .header-content {
     display: flex;
     flex-direction: column;
-  }
-
-  /* Über-mich → 1 Spalte */
-  .ueber-mich-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  /* Kontakt → 1 Spalte */
-  .kontakt-content-con {
-    display: grid;
-    grid-template-columns: 1fr;
     gap: 2rem;
   }
+  .left-header .image {
+    margin: 2rem auto 0;
+    width: 80%;
+    height: auto;
+  }
+  .right-header {
+    padding: 0 1.5rem;
+    text-align: center;
+  }
 
-  /* Zukunft → 1 Spalte */
-  .zukunft {
+  /* Grids → 1 Spalte */
+  .ueber-mich-grid,
+  .kontakt-content-con,
+  .zukunft,
+  .portfolios {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
-  /* Portfolio → 1 Spalte */
-  .portfolios {
-    grid-template-columns: 1fr;
+  /* Controls kleiner und unten am Bildschirm */
+  .controls {
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+    transform: none;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  .controls .control {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Buttons full-width */
+  .main-btn,
+  .submit-btn button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* etwas kleinere Schrift */
+  body {
+    font-size: 1rem;
   }
 }
 
-/* =============================================================================
-   2) Small – Tablets 576px–767.98px
-   =============================================================================
-*/
+/* ============================================================================ 
+   2) Small – Tablets 576px–767.98px 
+   ============================================================================ */
 @media (min-width: 576px) and (max-width: 767.98px) {
   section {
     padding: 3rem 6vw;
@@ -90,29 +98,33 @@ video {
   .header-content {
     grid-template-columns: 1fr;
   }
-
-  .ueber-mich-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+  .left-header .image {
+    margin: 2rem auto 0;
+    width: 70%;
+  }
+  .right-header {
+    padding: 0 2rem;
   }
 
+  .ueber-mich-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
   .kontakt-content-con {
     grid-template-columns: 1fr;
   }
-
   .zukunft {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
   }
-
   .portfolios {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* =============================================================================
-   3) Medium – Tablets & kleine Laptops 768px–991.98px
-   =============================================================================
-*/
+/* ============================================================================ 
+   3) Medium – Tablets & kleine Laptops 768px–991.98px 
+   ============================================================================ */
 @media (min-width: 768px) and (max-width: 991.98px) {
   section {
     padding: 4rem 8vw;
@@ -121,29 +133,29 @@ video {
   .header-content {
     grid-template-columns: 1fr 1fr;
   }
-
-  .ueber-mich-grid {
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 2rem;
+  .left-header .image {
+    margin-top: 4rem;
+    width: 60%;
   }
 
+  .ueber-mich-grid {
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 2rem;
+  }
   .kontakt-content-con {
     grid-template-columns: 1fr 1fr;
   }
-
   .zukunft {
-    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
   }
-
   .portfolios {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* =============================================================================
-   4) Large – Laptops 992px–1199.98px
-   =============================================================================
-*/
+/* ============================================================================ 
+   4) Large – Laptops 992px–1199.98px 
+   ============================================================================ */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   section {
     padding: 4rem 10vw;
@@ -153,24 +165,20 @@ video {
     grid-template-columns: 1fr 1.2fr 1fr;
     gap: 2.5rem;
   }
-
   .kontakt-content-con {
     grid-template-columns: 1fr 1fr;
   }
-
   .zukunft {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
   }
-
   .portfolios {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* =============================================================================
-   5) X-Large – Desktops ≥1200px
-   =============================================================================
-*/
+/* ============================================================================ 
+   5) X-Large – Desktops ≥1200px 
+   ============================================================================ */
 @media (min-width: 1200px) {
   section {
     padding: 4rem 12vw;
@@ -178,56 +186,29 @@ video {
 
   .ueber-mich-grid {
     grid-template-columns: 1fr 1.2fr 1.5fr;
+    gap: 2.5rem;
   }
-
   .kontakt-content-con {
     grid-template-columns: 1fr 1fr;
   }
-
   .zukunft {
     grid-template-columns: repeat(4, 1fr);
   }
-
   .portfolios {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* 7) Speziell für „Über mich“ auf breiteren Smartphones/Tablets – immer Abstand zur Sidebar */
-@media (min-width: 768px) {
-  #ueber-mich {
-    padding-right: calc(48px + 1rem) !important;
-  }
-}
-
-/* 8) Zusatz-Abstand rechts auf Laptops ≤1199px, damit die Sidebar nicht überlappt */
-@media (max-width: 1199.98px) {
-  /* alle Sektionen inklusive Über mich */
-  .section,
-  #ueber-mich,
-  .ueber-mich-wrapper {
-    padding-right: calc(48px + 1rem) !important;
-  }
-}
-
-/* Optional: verhindert, dass Scrollbars unerwartet in den Inhalt "hineinrutschen" */
-html {
-  scrollbar-gutter: stable both-edges;
-}
-
-/* ====================================================================
-   Countdown: Media Queries für maximale Kompatibilität & Layout-Sicherheit
-   ==================================================================== */
-
-/* Smartphones: Countdown darf umbrechen & ist kleiner */
+/* ============================================================================ 
+   Countdown – spezifische Anpassungen übernommen 
+   ============================================================================ */
+/* Smartphones: umbrechen & kleiner */
 @media (max-width: 575.98px) {
   .zukunft-item .countdown {
     font-size: 0.95rem;
-    padding: 0.5rem 0.6rem 0.5rem 0.5rem;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    white-space: normal; /* Zeilenumbruch erlauben */
-    word-break: break-word; /* notfalls innerhalb von Wörtern umbrechen */
+    padding: 0.5rem 0.6rem;
+    white-space: normal;
+    word-break: break-word;
     text-overflow: unset;
     justify-content: flex-start;
   }
@@ -236,30 +217,24 @@ html {
     margin-right: 0.25em;
   }
 }
-
-/* Tablets (Hoch-/Querformat): Countdown flexibel, mittlere Schrift */
+/* Tablets & kleine Laptops */
 @media (min-width: 576px) and (max-width: 991.98px) {
   .zukunft-item .countdown {
     font-size: 1rem;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    white-space: nowrap; /* Keine Umbrüche */
+    white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    padding-left: 0.7rem;
-    padding-right: 0.7rem;
+    padding: 0.7rem;
   }
   .countdown-icon {
     font-size: 1.08em;
   }
 }
-
-/* Laptops & grösser: Countdown immer auf einer Zeile, Mindestbreite */
+/* Laptops & größer */
 @media (min-width: 992px) {
   .zukunft-item .countdown {
     font-size: 1.07rem;
     min-width: 200px;
-    max-width: 100% !important;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -269,24 +244,9 @@ html {
   }
 }
 
-/* Winzige Smartphones (Notch, Mini-Displays, z.B. iPhone SE) */
-@media (max-width: 370px) {
-  .zukunft-item .countdown {
-    font-size: 0.88rem;
-    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
-    word-break: break-all;
-  }
-  .countdown-icon {
-    font-size: 0.9em;
-  }
-}
-
-/* Sicherheit: Countdown-Inhalt nie rauslaufen lassen, Flexbox-Bugs vorbeugen */
-@media (max-width: 991.98px) {
-  .zukunft-item .countdown,
-  .zukunft-item .countdown * {
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
+/* ============================================================================ 
+   Stabiler Scrollbar-Gutter, vermeidet Springen 
+   ============================================================================ */
+html {
+  scrollbar-gutter: stable both-edges;
 }
