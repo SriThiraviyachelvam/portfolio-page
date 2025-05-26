@@ -74,55 +74,76 @@ function updateCountdown(targetDateStr, el) {
 }
 
 /*———————————————————————————————*/
-/* 3) Formular-Validierung */
+/* 3) Formular-Validierung & EmailJS */
 /*———————————————————————————————*/
 
-// Hilfsfunktionen
 function isValidEmail(val) {
   return /\S+@\S+\.\S+/.test(val);
 }
 function hasMinLength(val, min) {
   return val.trim().length >= min;
 }
-function setError(input, msg) {
-  const err = input.nextElementSibling;
-  if (err) err.textContent = msg;
-  input.classList.add("invalid");
-}
-function clearError(input) {
-  const err = input.nextElementSibling;
-  if (err) err.textContent = "";
-  input.classList.remove("invalid");
-}
 function showSuccess(msg) {
   const div = document.querySelector(".success-message");
   if (div) div.textContent = msg;
 }
 
+// Mail versenden mit EmailJS
+function sendMailWithEmailJS(fields) {
+  const serviceID = "service_ie9vq78";
+  const templateID = "template_0bukl5d";
+
+  const params = {
+    name: fields.name.value,
+    email: fields.email.value,
+    subject: fields.subject.value,
+    message: fields.message.value,
+  };
+
+  emailjs
+    .send(serviceID, templateID, params)
+    .then((res) => {
+      console.log("Email gesendet:", res.status, res.text);
+      showSuccess("Danke, deine Nachricht wurde versendet! 🎉");
+
+      const form = document.querySelector(".kontakt-form");
+      form.reset();
+      form.querySelectorAll(".error-message.valid").forEach((el) => {
+        el.textContent = "";
+        el.classList.remove("valid");
+      });
+    })
+    .catch((err) => {
+      console.error("Fehler beim Senden:", err);
+      showSuccess("Hoppla, da ist etwas schiefgelaufen.");
+    });
+}
+
+// Kontaktformular Validierung
 function initContactForm() {
   const form = document.querySelector(".kontakt-form");
   if (!form) return;
   form.setAttribute("novalidate", "");
 
-  const fields = [
-    { el: form.elements.name, min: 2, msg: "Bitte min. 2 Zeichen." },
-    { el: form.elements.email, email: true, msg: "Ungültige E-Mail." },
-    { el: form.elements.subject, min: 5, msg: "Betreff min. 5 Zeichen." },
-    { el: form.elements.message, min: 15, msg: "Nachricht min. 15 Zeichen." },
+  const fields = {
+    name: form.elements.name,
+    email: form.elements.email,
+    subject: form.elements.subject,
+    message: form.elements.message,
+  };
+  const rules = [
+    { el: fields.name, min: 2, msg: "Bitte min. 2 Zeichen." },
+    { el: fields.email, email: true, msg: "Ungültige E-Mail." },
+    { el: fields.subject, min: 5, msg: "Betreff min. 5 Zeichen." },
+    { el: fields.message, min: 15, msg: "Nachricht min. 15 Zeichen." },
   ];
 
-  // Validierungsfunktion für ein einzelnes Feld
   function validateField({ el, min, email, msg }) {
     const span = el.nextElementSibling;
     let ok = true;
+    if (email) ok = isValidEmail(el.value);
+    else if (min) ok = hasMinLength(el.value, min);
 
-    if (email) {
-      ok = /\S+@\S+\.\S+/.test(el.value);
-    } else if (min) {
-      ok = el.value.trim().length >= min;
-    }
-
-    // Reset
     el.classList.remove("invalid");
     span.classList.remove("valid");
     span.textContent = "";
@@ -134,44 +155,27 @@ function initContactForm() {
       span.textContent = "✓";
       span.classList.add("valid");
     }
-
     return ok;
   }
 
-  // 1) Live-Validation: bei jedem Tippen
-  fields.forEach((field) => {
-    field.el.addEventListener("input", () => validateField(field));
+  rules.forEach((rule) => {
+    rule.el.addEventListener("input", () => validateField(rule));
   });
 
-  // 2) Final-Check beim Absenden
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     let allValid = true;
 
-    fields.forEach((field) => {
-      const ok = validateField(field);
-      if (!ok) allValid = false;
+    rules.forEach((rule) => {
+      if (!validateField(rule)) allValid = false;
     });
 
     if (allValid) {
-      form.reset();
-      showSuccess("Danke, ich melde mich bei dir! 🎉");
-
-      // Grüne Häkchen nach 3s wieder ausblenden
-      setTimeout(() => {
-        fields.forEach(({ el }) => {
-          const span = el.nextElementSibling;
-          span.textContent = "";
-          span.classList.remove("valid");
-        });
-      }, 3000);
+      sendMailWithEmailJS(fields);
     }
   });
 }
 
-/*———————————————————————————————*/
-/* 4) DOM ready */
-/*———————————————————————————————*/
 document.addEventListener("DOMContentLoaded", () => {
   PageTransitions();
   initCountdowns();
