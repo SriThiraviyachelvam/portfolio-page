@@ -472,7 +472,7 @@ section {
   width: 60%;
 }
 .about-skills .javascript {
-  width: 55%;
+  width: 65%;
 }
 .about-skills .figma {
   width: 70%;
@@ -481,7 +481,7 @@ section {
   width: 60%;
 }
 .about-skills .sql {
-  width: 40%;
+  width: 50%;
 }
 
 /* Lebenslauf */
@@ -662,6 +662,28 @@ section {
   object-fit: cover;
   filter: grayscale(70%) contrast(1.1);
   transition: transform 0.6s ease, filter 0.6s ease;
+  backface-visibility: hidden;
+  will-change: transform, filter;
+  image-rendering: optimizeQuality;
+  image-rendering: crisp-edges;
+}
+
+.sec3 .portfolio-item .image img[src*="Bild von GitLab"] {
+  filter: none !important;
+  filter: brightness(1.1) contrast(1.1) !important;
+}
+
+.sec3 .portfolio-item .image img[src*="Bild von KI"] {
+  filter: none !important;
+  filter: brightness(1.1) contrast(1.1) !important;
+}
+
+.sec3 .portfolio-item .image img[src*="ELVA Bau GmbH"] {
+  object-fit: contain !important;
+  object-position: center;
+  filter: none !important;
+  filter: brightness(1.1) contrast(1.1) !important;
+  background-color: #fff;
 }
 
 .sec3 .portfolio-item:hover .image img {
