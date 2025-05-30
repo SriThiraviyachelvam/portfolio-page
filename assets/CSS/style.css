@@ -14,13 +14,13 @@
   box-sizing: border-box;
   list-style: none;
 }
-/*---------------------------- Body--------------------------------------------- */
+/*---------------------------- Body---------------------------------------------*/
 body {
   background-color: var(--color-primary);
   color: var(--color-white);
   font-family: "Poppins", sans-serif;
-  font-size: 1.1rem; /* bleibt erhalten */
-  line-height: 1.6; /* für bessere Lesbarkeit */
+  font-size: 1.1rem;
+  line-height: 1.6;
   transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 }
 
@@ -46,8 +46,7 @@ section {
   padding: 3rem 12vw;
 }
 
-/* ----------------------------------------- Sections ----------------------------------------- */
-
+/*----------------------------------------- Sections -----------------------------------------*/
 .section {
   transform: translateY(-100%) scale(0);
   transition: all 0.4s ease-in-out;
@@ -84,7 +83,7 @@ section {
   animation: scaleAnim 0.8s ease-in-out;
 }
 
-/* --------- Animation beim Laden --------- */
+/*--------- Animation beim Laden ---------*/
 @keyframes scaleAnim {
   0% {
     transform: scale(0.95);
@@ -96,9 +95,7 @@ section {
   }
 }
 
-/*------------------------------------------------------------------------------------*/
-/* Controls */
-
+/*----------------------------------------- Controls -----------------------------------------*/
 .controls {
   position: fixed;
   z-index: 10;
@@ -144,8 +141,7 @@ section {
   color: var(--color-primary) !important;
 }
 
-/* ----------------------------------------- Header Style ----------------------------------------- */
-
+/*----------------------------------------- Header Style -----------------------------------------*/
 .header-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -203,7 +199,7 @@ section {
   color: var(--color-grey1);
 }
 
-/* ----------------------------------------- Button Style ----------------------------------------- */
+/*----------------------------------------- Button Style -----------------------------------------*/
 .btn-con {
   display: flex;
   align-self: flex-start;
@@ -250,7 +246,7 @@ section {
   color: var(--color-secondary);
 }
 
-/* ----------------------------------------- Upgrade Button Style ----------------------------------------- */
+/*----------------------------------------- Upgrade Button Style -----------------------------------------*/
 .main-btn {
   position: relative;
   overflow: hidden;
@@ -294,7 +290,7 @@ section {
   box-shadow: 0 0 0 3px rgba(30, 215, 96, 0.5), inset 0 0 0 2px #fff;
 }
 
-/* Über mich Bereich - generell Layout & Typografie */
+/*Über mich Bereich - generell Layout & Typografie*/
 .left-about {
   padding-right: 2rem;
 }
@@ -314,7 +310,7 @@ section {
   padding: 1rem 0;
 }
 
-/* Statistikboxen auf der rechten Seite   */
+/*Statistikboxen auf der rechten Seite*/
 
 .right-about {
   display: grid;
@@ -368,7 +364,7 @@ section {
   border-radius: 2px;
 }
 
-/* Über mich: 3-Spalten-Layout */
+/*Über mich: 3-Spalten-Layout*/
 .ueber-mich-wrapper {
   max-width: 1600px;
   margin: 0 auto;
@@ -418,7 +414,7 @@ section {
   margin-top: 2rem;
 }
 
-/* Informatik-Kenntnisse */
+/*Informatik-Kenntnisse*/
 .about-skills .progress-bar {
   margin-bottom: 1rem;
 }
@@ -484,7 +480,7 @@ section {
   width: 50%;
 }
 
-/* Lebenslauf */
+/*Lebenslauf*/
 .about-lifeline {
   padding: 1.5rem;
   background-color: var(--color-grey5);
@@ -522,10 +518,7 @@ section {
   font-weight: 600;
   color: var(--color-white);
   margin-bottom: 0.4rem;
-
-  /* gleiche Zeilenanzahl erzwingen (hier ca. 2 Zeilen + Abstand) */
-  min-height: 3.2rem; /* bei Dir bitte noch feinjustieren falls nötig */
-
+  min-height: 3.2rem;
   hyphens: none;
   word-break: normal;
   overflow-wrap: normal;
@@ -576,8 +569,7 @@ section {
   white-space: nowrap;
 }
 
-/*    Portfolio-Bereich       */
-
+/*Portfolio-Bereich*/
 .sec3 .main-title {
   text-align: center;
   margin-bottom: 2rem;
@@ -621,7 +613,7 @@ section {
   cursor: pointer;
 }
 
-/* Staggered Fade-In Animation */
+/*Staggered Fade-In Animation*/
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -751,20 +743,26 @@ section {
   margin-top: 1rem;
 }
 .sec3 .hover-item .icon {
-  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
   color: var(--color-white);
   background-color: var(--color-secondary);
-  padding: 0.6rem;
   border-radius: 50%;
   transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  transform-origin: center center;
 }
+
 .sec3 .hover-item .icon:hover {
   background-color: var(--color-white);
   color: var(--color-secondary);
-  transform: scale(1.2) rotate(10deg);
+  transform: scale(1.1) rotate(10deg);
 }
 
-/* ====== Meine Zukunft ====== */
+/*Meine Zukunft*/
 .zukunft-content {
   max-width: 1600px;
   margin: 0 auto;
@@ -777,18 +775,15 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
-  align-items: stretch; /* Karten immer gleich hoch */
+  align-items: stretch;
 }
 
-/* Einzelne Zukunftskarte */
 .zukunft-item {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   height: 100%;
   min-height: 490px;
-
   background-color: var(--color-grey5);
   border-radius: 12px;
   overflow: hidden;
@@ -801,7 +796,6 @@ section {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Bild oben */
 .zukunft-item img {
   width: 100%;
   height: 180px;
@@ -814,7 +808,6 @@ section {
   filter: brightness(1);
 }
 
-/* Textbereich */
 .zukunft-text {
   padding: 1.5rem;
   display: flex;
@@ -823,7 +816,6 @@ section {
   flex: 1;
 }
 
-/* Überschrift mit grünem Akzent */
 .zukunft-text h4 {
   font-size: 1.25rem;
   font-weight: 600;
@@ -845,7 +837,6 @@ section {
   border-radius: 3px;
 }
 
-/* Fließtext */
 .zukunft-text p {
   font-size: 1rem;
   line-height: 1.6;
@@ -857,7 +848,7 @@ section {
   white-space: normal;
 }
 
-/* Countdown Timer: Spotify-Glow und perfekte Ausrichtung */
+/*Countdown Timer*/
 @keyframes sanduhr-rotate {
   0% {
     transform: rotate(0deg);
@@ -867,24 +858,16 @@ section {
   }
 }
 
-/* 3. Countdown: Shrink-to-fit, verhindert Umbruch und überlauf */
 .zukunft-item .countdown {
-  /* Layout & Shrink-to-fit */
   display: inline-flex;
   flex: 0 0 auto;
   width: auto;
   max-width: 100%;
-
-  /* Immer am Boden der Karte */
-  margin-top: auto; /* drückt das Element nach unten */
-  margin-bottom: 1.2rem; /* Abstand zum Kartenrand */
-
-  /* Kein Umbruch, keine Überläufe */
+  margin-top: auto;
+  margin-bottom: 1.2rem;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
-
-  /* Styling unverändert */
   padding: 0.62rem 1.05rem 0.62rem 0.85rem;
   align-items: center;
   justify-content: center;
@@ -902,9 +885,7 @@ section {
   user-select: none;
 }
 
-/* 4. Sanduhr-Icon: wird nicht gestaucht und rotiert */
 .countdown-icon {
-  /* 1) Eigene Box (quadratisch) für saubere Rotation */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -919,18 +900,14 @@ section {
   opacity: 0.92;
 }
 
-/* 5. Hover-Zustand für den Countdown */
+/*Hover Effekt für Countdown*/
 .zukunft-item .countdown:hover {
   box-shadow: 0 0 0 2px #1db954, 0 6px 22px 0 #23ea6f2c;
   background: linear-gradient(180deg, #1e2124 90%, #242e28 100%);
   color: #22ff80;
 }
 
-/* ========================
-   Kontaktbereich
-   ======================== */
-
-/* Container & Grid */
+/*Kontaktbereich*/
 .kontakt-container {
   max-width: 1600px;
   margin: 0 auto;
@@ -942,7 +919,6 @@ section {
   margin-bottom: 3rem;
 }
 
-/* Layout: linke Info-Spalte | rechte Formular-Spalte */
 .kontakt-content-con {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -950,7 +926,6 @@ section {
   align-items: start;
 }
 
-/* Linke Spalte */
 .left-kontakt {
   display: flex;
   flex-direction: column;
@@ -970,7 +945,6 @@ section {
   color: var(--color-grey1);
 }
 
-/* Kontakt-Infos (Icon + Text nebeneinander) */
 .kontakt-info {
   margin-top: 1.5rem;
 }
@@ -1000,7 +974,7 @@ section {
   color: var(--color-grey1);
 }
 
-/* Social-Icons nebeneinander */
+/*Social Media Icons*/
 .kontakt-icons {
   margin-top: 2rem;
 }
@@ -1028,12 +1002,11 @@ section {
   color: var(--color-primary);
 }
 
-/* Rechte Spalte – Formular */
+/*Kontakt Formular*/
 .right-kontakt .kontakt-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  /* gleich hier die Font-Family setzen */
   font-family: "Poppins", "Segoe UI", sans-serif;
 }
 .kontakt-form .i-c-2 {
@@ -1054,12 +1027,10 @@ section {
 }
 .kontakt-form input::placeholder,
 .kontakt-form textarea::placeholder {
-  /* Platzhalter-Text genauso stylen */
   font-family: inherit;
   color: var(--color-grey1);
 }
 
-/* Spotify-Style “Senden”-Button */
 .submit-btn {
   margin-top: 1rem;
 }
@@ -1078,36 +1049,34 @@ section {
   color: var(--color-primary);
 }
 
-/* Inline-Fehlertexte */
+/*Fehlertexte*/
 .error-message {
   display: block;
   margin-top: 0.25rem;
   font-size: 0.875rem;
   font-weight: 600 !important;
-  color: #e74c3c; /* rotes Error-Highlight */
-  min-height: 1.2em; /* verhindert Springen */
+  color: #e74c3c;
+  min-height: 1.2em;
 }
 
-/* Feld-Rand rot bei Fehler */
 .input-control input:invalid,
 .input-control textarea:invalid {
   border-color: #e74c3c;
 }
 
-/* Erfolgsmeldung */
+/*Erfolgsmeldung*/
 .success-message {
   margin-top: 1rem;
   font-size: 1rem;
   color: #1db954;
 }
 
-/* grüner Status-Text für validierte Felder */
+/*Grüner Haken*/
 .error-message.valid {
-  color: #1db954; /* dein Spotify-Grün */
+  color: #1db954;
   font-weight: 600;
 }
 
-/* Autofill Styling unterdrücken für alle Inputs & Textareas */
 input:-webkit-autofill,
 textarea:-webkit-autofill {
   box-shadow: 0 0 0 1000px var(--color-grey5) inset !important;
@@ -1120,7 +1089,6 @@ textarea:-webkit-autofill {
   transition: background-color 9999s ease-in-out 0s !important;
 }
 
-/* Verhindert Vergrösserung von Input-Feldern durch Autofill */
 input,
 textarea {
   height: 3.5rem;
@@ -1128,9 +1096,9 @@ textarea {
   box-sizing: border-box;
 }
 
-/* Ausnahme für Textareas */
+/*Ausnahmen für Textareas*/
 textarea {
-  font-family: inherit; /* <-- sicherstellen, dass es wirklich angewendet wird */
+  font-family: inherit;
   height: auto;
   min-height: 8rem;
   resize: vertical;

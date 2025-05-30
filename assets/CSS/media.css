@@ -1,4 +1,4 @@
-/* Platz für die fixe Sidebar rechts freihalten */
+/*Platz für die fixe Sidebar rechts freihalten*/
 .main-content,
 .section,
 .kontakt-container,
@@ -6,7 +6,7 @@
   padding-right: calc(48px + 1rem);
 }
 
-/* Bilder und Media-Elemente nie über ihren Container hinausstrecken */
+/*Bilder und Media-Elemente nie über ihren Container hinausstrecken*/
 img,
 video {
   max-width: 100%;
@@ -14,12 +14,12 @@ video {
   display: block;
 }
 
-/* Kontakt-Labels nie umbrechen */
+/*Kontakt-Labels nie umbrechen*/
 .kontakt-item .label {
   white-space: nowrap;
 }
 
-/* Portfolio-Grid – immer flexibel */
+/*Portfolio-Grid: Immer flexibel*/
 .portfolios {
   display: grid;
   gap: 2.5rem;
@@ -30,12 +30,11 @@ video {
    1) Extra small – Smartphones ≤ 575.98px 
    ============================================================================ */
 @media (max-width: 575.98px) {
-  /* Genereller Abstand */
   section {
     padding: 2rem 4vw;
   }
 
-  /* Header → untereinander, Bild zentriert */
+  /*Header - untereinander, Bild zentriert*/
   .header-content {
     display: flex;
     flex-direction: column;
@@ -51,7 +50,7 @@ video {
     text-align: center;
   }
 
-  /* Grids → 1 Spalte */
+  /*Grids*/
   .ueber-mich-grid,
   .kontakt-content-con,
   .zukunft,
@@ -60,7 +59,7 @@ video {
     gap: 1.5rem;
   }
 
-  /* Controls kleiner und unten am Bildschirm */
+  /*Controls kleiner und unten am Bildschirm*/
   .controls {
     top: auto;
     bottom: 1rem;
@@ -74,14 +73,14 @@ video {
     height: 40px;
   }
 
-  /* Buttons full-width */
+  /*Buttons full-width*/
   .main-btn,
   .submit-btn button {
     width: 100%;
     justify-content: center;
   }
 
-  /* etwas kleinere Schrift */
+  /*Etwas kleinere Schrift*/
   body {
     font-size: 1rem;
   }
@@ -200,9 +199,9 @@ video {
 }
 
 /* ============================================================================ 
-   Countdown – spezifische Anpassungen übernommen 
+   Countdown – spezifische Anpassungen
    ============================================================================ */
-/* Smartphones: umbrechen & kleiner */
+/*Smartphones: Umbrechen & kleiner*/
 @media (max-width: 575.98px) {
   .zukunft-item .countdown {
     font-size: 0.95rem;
@@ -216,7 +215,7 @@ video {
     margin-right: 0.25em;
   }
 }
-/* Tablets & kleine Laptops */
+/*Tablets & kleine Laptops*/
 @media (min-width: 576px) and (max-width: 991.98px) {
   .zukunft-item .countdown {
     font-size: 1rem;
@@ -228,7 +227,7 @@ video {
     font-size: 1.08em;
   }
 }
-/* Laptops & größer */
+/*Laptops & größer*/
 @media (min-width: 992px) {
   .zukunft-item .countdown {
     font-size: 1.07rem;
@@ -243,7 +242,7 @@ video {
 }
 
 /* ============================================================================ 
-   Stabiler Scrollbar-Gutter, vermeidet Springen 
+   Stabiler Scrollbar-Gutter
    ============================================================================ */
 html {
   scrollbar-gutter: stable both-edges;
